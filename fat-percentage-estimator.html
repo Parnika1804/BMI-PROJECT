@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fat Percentage Estimator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-image: url('https://cdn.pixabay.com/photo/2022/04/06/07/41/pastels-7115023_1280.png');
+            background-size: cover;
+        }
+        .content {
+            max-width: 400px;
+            margin: auto;
+            background: #ffe6e6;
+            padding: 20px;
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            background-color: #009688;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #00796b;
+        }
+        .result {
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">Fat Percentage Estimator</h1>
+    <div class="content">
+        <h2>Your Profile Information</h2>
+        <p id="name"></p>
+        <p id="age"></p>
+        <p id="weight"></p>
+        <p id="height"></p>
+        
+        <h2>Calculate Your Fat Percentage</h2>
+        <label for="waist">Waist Circumference (cm):</label>
+        <input type="number" id="waist" required>
+        <br><br>
+        <label for="neck">Neck Circumference (cm):</label>
+        <input type="number" id="neck" required>
+        <br><br>
+        <label for="hip">Hip Circumference (cm) (for women):</label>
+        <input type="number" id="hip">
+        <br><br>
+        <button class="button" onclick="calculateFatPercentage()">Calculate Fat Percentage</button>
+        
+        <p class="result" id="fat-result"></p>
+    </div>
+
+    <script>
+        // Retrieve the data from local storage
+        const userData = JSON.parse(localStorage.getItem("userData"));
+
+        // Display the data on the page
+        document.getElementById("name").innerText = `Name: ${userData.name}`;
+        document.getElementById("age").innerText = `Age: ${userData.age}`;
+        document.getElementById("weight").innerText = `Weight: ${userData.weight} kg`;
+        document.getElementById("height").innerText = `Height: ${userData.height} m`;
+
+        function calculateFatPercentage() {
+            const waist = parseFloat(document.getElementById("waist").value);
+            const neck = parseFloat(document.getElementById("neck").value);
+            const hip = document.getElementById("hip").value ? parseFloat(document.getElementById("hip").value) : 0;
+
+            if (isNaN(waist) || isNaN(neck) || (hip && isNaN(hip))) {
+                alert("Please enter valid waist, neck, and hip values.");
+                return;
+            }
+
+            let bodyFatPercentage;
+
+            // Use the US Navy Body Fat Formula
+            // For men: BF% = 86.010 * log10(waist - neck) - 70.041 * log10(height) + 36.76
+            // For women: BF% = 163.205 * log10(waist + hip - neck) - 97.684 * log10(height) - 78.387
+
+            if (hip) { // Assuming the user is female
+                bodyFatPercentage = 163.205 * Math.log10(waist + hip - neck) - 97.684 * Math.log10(userData.height) - 78.387;
+            } else { // Assuming the user is male
+                bodyFatPercentage = 86.010 * Math.log10(waist - neck) - 70.041 * Math.log10(userData.height) + 36.76;
+            }
+
+            document.getElementById("fat-result").innerText = `Your estimated body fat percentage is: ${bodyFatPercentage.toFixed(2)}%`;
+        }
+    </script>
+</body>
+</html>
