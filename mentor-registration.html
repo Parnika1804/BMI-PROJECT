@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mentor Registration</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('https://cdn.pixabay.com/photo/2022/04/06/07/41/pastels-7115023_1280.png');
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #ffffffd9;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 100, 90, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      color: #00796b;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #004d40;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #b2dfdb;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #009688;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #00796b;
+    }
+
+    .connect-wallet-btn {
+      background-color: #f39c12;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .connect-wallet-btn:hover {
+      background-color: #e67e22;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mentor Registration</h1>
+    <form action="sbt-leaderboard.html" method="GET">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+      
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+      
+        <label for="university">University Name</label>
+        <input type="text" id="university" name="university" required>
+      
+        <label for="year">Year of Study</label>
+        <select id="year" name="year" required>
+          <option value="">Select Year</option>
+          <option value="1">1st Year</option>
+          <option value="2">2nd Year</option>
+          <option value="3">3rd Year</option>
+          <option value="4">4th Year</option>
+        </select>
+      
+        <label for="experience">Why do you want to be a mentor?</label>
+        <textarea id="experience" name="experience" rows="4" required></textarea>
+      
+        <button type="submit">Register as Mentor</button>
+      </form>      
+
+    <!-- Connect Wallet Button -->
+    <button class="connect-wallet-btn" id="connectWalletBtn" onclick="connectWallet()">Connect Wallet</button>
+  </div>
+
+  <script>
+    // Function to handle wallet connection
+    async function connectWallet() {
+      if (window.ethereum) {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          alert('Connected to wallet: ' + accounts[0]);
+          document.getElementById('connectWalletBtn').innerText = 'Wallet Connected';
+          document.getElementById('connectWalletBtn').disabled = true;
+        } catch (error) {
+          alert('Error connecting wallet: ' + error.message);
+        }
+      } else {
+        alert('Please install MetaMask to connect your wallet.');
+      }
+    }
+  </script>
+</body>
+</html>

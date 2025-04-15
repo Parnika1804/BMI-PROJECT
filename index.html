@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MindMesh | Wellness & BMI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #e0f2f1, #ffffff);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .header {
+      background: #00695c;
+      color: #fff;
+      text-align: center;
+      padding: 50px 20px;
+      font-size: 2.8rem;
+      letter-spacing: 1.5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: slideInDown 1s ease;
+    }
+
+    @keyframes slideInDown {
+      from {
+        transform: translateY(-40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      animation: slideInUp 1s ease;
+    }
+
+    @keyframes slideInUp {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .content h2 {
+      font-size: 2.3rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .quote {
+      font-size: 1.2rem;
+      font-style: italic;
+      text-align: center;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .content p {
+      font-size: 1.05rem;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .button {
+      display: block;
+      width: 220px;
+      margin: 25px auto;
+      padding: 14px 20px;
+      font-size: 1.1rem;
+      background: #009688;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    .button:hover {
+      background-color: #00796b;
+      transform: scale(1.05);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #777;
+      background-color: #f2f2f2;
+      margin-top: 60px;
+    }
+
+    footer a {
+      color: #00796b;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 600px) {
+      .header {
+        font-size: 2rem;
+        padding: 30px 15px;
+      }
+
+      .content h2 {
+        font-size: 1.8rem;
+      }
+
+      .button {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <div class="header">
+    Mental Wellness Friendly BMI Calculator
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h2>Welcome to MindMesh</h2>
+    <p class="quote">"You don't have to control your thoughts. You just have to stop letting them control you." — Dan Millman</p>
+    <p>
+      Struggling with self-image or mental stress? You're not alone. MindMesh offers a unique combo of physical health tools like BMI tracking and access to psychology mentors who support your mental well-being.
+    </p>
+    <p>
+      Whether it's personalized guidance or simply someone to talk to, our platform has your back—because true wellness starts within.
+    </p>
+
+    <!-- CTA Buttons -->
+    <button class="button" onclick="enterAsUser()">Enter as User</button>
+    <button class="button" onclick="enterAsMentor()">Enter as Mentor</button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 MindMesh. All rights reserved. | <a href="#">Contact Us</a>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function enterAsUser() {
+      window.location.href = "page1.html";
+    }
+
+    function enterAsMentor() {
+      window.location.href = "mentor-registration.html";
+    }
+  </script>
+</body>
+</html>
