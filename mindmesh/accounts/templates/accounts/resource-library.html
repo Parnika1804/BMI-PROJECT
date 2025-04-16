@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Library</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-image: url('https://cdn.pixabay.com/photo/2022/04/06/07/41/pastels-7115023_1280.png');
+            background-size: cover;
+            color: #333;
+        }
+        .content {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #009688;
+            margin-bottom: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #00796b;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #009688;
+            padding-bottom: 5px;
+        }
+        .resource-category {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .resource-item {
+            margin: 10px;
+            text-align: center;
+            flex: 0 1 30%; /* Flexbox to create a responsive card layout */
+            max-width: 250px;
+            background: #e0f2f1;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: move 5s infinite; /* Add animation */
+        }
+        .resource-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .resource-item a {
+            text-decoration: none;
+            color: #009688;
+            font-weight: bold;
+            display: block;
+            padding: 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .resource-item a:hover {
+            background-color: #009688;
+            color: white;
+        }
+        .button {
+            background-color: #009688;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            text-align: center;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .button:hover {
+            background-color: #00796b;
+            transform: translateY(-2px);
+        }
+
+        /* Animation keyframes */
+        @keyframes move {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Resource Library</h1>
+    <div class="content">
+        <h2>Nutrition Resources</h2>
+        <div class="resource-category">
+            <div class="resource-item"><a href="https://www.eatright.org/" target="_blank">Academy of Nutrition and Dietetics</a></div>
+            <div class="resource-item"><a href="https://www.nutrition.gov/" target="_blank">Nutrition.gov</a></div>
+            <div class="resource-item"><a href="https://www.choosemyplate.gov/" target="_blank">Choose My Plate</a></div>
+        </div>
+
+        <h2>Exercise Resources</h2>
+        <div class="resource-category">
+            <div class="resource-item"><a href="https://www.acefitness.org/" target="_blank">American Council on Exercise</a></div>
+            <div class="resource-item"><a href="https://www.verywellfit.com/" target="_blank">Verywell Fit</a></div>
+            <div class="resource-item"><a href="https://www.fitnessblender.com/" target="_blank">Fitness Blender</a></div>
+        </div>
+
+        <h2>Wellness Resources</h2>
+        <div class="resource-category">
+            <div class="resource-item"><a href="https://www.mayoclinic.org/healthy-lifestyle" target="_blank">Mayo Clinic Healthy Lifestyle</a></div>
+            <div class="resource-item"><a href="https://www.healthline.com/" target="_blank">Healthline</a></div>
+            <div class="resource-item"><a href="https://www.webmd.com/" target="_blank">WebMD</a></div>
+        </div>
+
+        <button class="button" onclick="window.location.href='your-nutrition-plan.html'">Go Back to Nutrition Plan</button>
+    </div>
+</body>
+</html>

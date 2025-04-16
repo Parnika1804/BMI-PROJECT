@@ -158,7 +158,7 @@
 
   <!-- Main Content -->
   <div class="content">
-    <h2>Welcome to MindMesh</h2>
+    <h2>Welcome {{ user.username }}!</h2>
     <p class="quote">"You don't have to control your thoughts. You just have to stop letting them control you." — Dan Millman</p>
     <p>
       Struggling with self-image or mental stress? You're not alone. MindMesh offers a unique combo of physical health tools like BMI tracking and access to psychology mentors who support your mental well-being.
@@ -168,8 +168,12 @@
     </p>
 
     <!-- CTA Buttons -->
-    <button class="button" onclick="enterAsUser()">Enter as User</button>
-    <button class="button" onclick="enterAsMentor()">Enter as Mentor</button>
+    <button class="button" onclick="window.location.href='{% url 'page1' %}'">Enter as User</button>
+    <button class="button" onclick="window.location.href={% url 'mentor_registration' %}">Enter as Mentor</button>
+    
+    <p style="text-align:center; margin-top: 20px;">
+      <a href="{% url 'logout' %}" style="color: #00796b;">Logout</a>
+    </p>
   </div>
 
   <!-- Footer -->
@@ -177,15 +181,5 @@
     &copy; 2025 MindMesh. All rights reserved. | <a href="#">Contact Us</a>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    function enterAsUser() {
-      window.location.href = "page1.html";
-    }
-
-    function enterAsMentor() {
-      window.location.href = "mentor-registration.html";
-    }
-  </script>
 </body>
 </html>

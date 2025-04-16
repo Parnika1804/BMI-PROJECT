@@ -330,7 +330,7 @@
     
         function startChat(name) {
             alert("Chat started with " + name);
-            window.location.href = "chat.html";
+            window.location.href = "{% url 'chat' %}";
         }
     
         function getMatched() {

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Risks Estimator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-image: url('https://cdn.pixabay.com/photo/2022/04/06/07/41/pastels-7115023_1280.png');
+            background-size: cover;
+        }
+        .content {
+            max-width: 400px;
+            margin: auto;
+            background: #ffe6e6;
+            padding: 20px;
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            background-color: #009688;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #00796b;
+        }
+        .result {
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">Health Risks Estimator</h1>
+    <div class="content">
+        <h2>Your Profile Information</h2>
+        <p id="name"></p>
+        <p id="age"></p>
+        <p id="weight"></p>
+        <p id="height"></p>
+        <p id="bmi"></p>
+        
+        <h2>Health Risk Assessment</h2>
+        <button class="button" onclick="assessHealthRisks()">Assess Health Risks</button>
+        
+        <p class="result" id="risk-result"></p>
+    </div>
+
+    <script>
+        // Retrieve the data from local storage
+        const userData = JSON.parse(localStorage.getItem("userData"));
+
+        // Display the data on the page
+        document.getElementById("name").innerText = `Name: ${userData.name}`;
+        document.getElementById("age").innerText = `Age: ${userData.age}`;
+        document.getElementById("weight").innerText = `Weight: ${userData.weight} kg`;
+        document.getElementById("height").innerText = `Height: ${userData.height} m`;
+
+        // Calculate BMI
+        const bmi = userData.bmi;
+        document.getElementById("bmi").innerText = `BMI: ${bmi.toFixed(2)} (${userData.bmiCategory})`;
+
+        function assessHealthRisks() {
+            let riskMessage;
+
+            if (bmi < 18.5) {
+                riskMessage = "You are categorized as Underweight. This may increase your risk of nutritional deficiencies and osteoporosis.";
+            } else if (bmi < 25) {
+                riskMessage = "You are categorized as Normal weight. Generally, you have a lower risk of health issues.";
+            } else if (bmi < 30) {
+                riskMessage = "You are categorized as Overweight. This may increase your risk of heart disease, diabetes, and hypertension.";
+            } else {
+                riskMessage = "You are categorized as Obese. This significantly increases your risk of serious health conditions such as heart disease, diabetes, and certain cancers.";
+            }
+
+            document.getElementById("risk-result").innerText = riskMessage;
+        }
+    </script>
+</body>
+</html>

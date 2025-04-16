@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,7 +119,7 @@
 
     <div class="chat-container">
         <div class="chat-header">
-            <h2>Chat with Mentor</h2>
+            <h2>Chat with <span id="mentor-name">{{ mentor_name }}</span></h2>
         </div>
         <div class="chat-box" id="chat-box">
             <!-- Chat messages will appear here -->
@@ -137,21 +138,13 @@
     </div>
 
     <script>
-        // Get mentor's name from the URL parameter (simulating dynamic mentor info)
-        const urlParams = new URLSearchParams(window.location.search);
-        const mentorName = urlParams.get('mentor') || "Unknown Mentor";
-        document.getElementById('mentor-name').textContent = mentorName;
-
         // Function to simulate sending a message
         function sendMessage() {
             const messageBox = document.getElementById('user-message');
             const messageText = messageBox.value.trim();
             if (messageText !== "") {
-                // Display user message
                 displayMessage(messageText, 'user');
-                // Clear input field
                 messageBox.value = "";
-                // Simulate a delay for mentor's reply
                 setTimeout(() => {
                     const mentorReply = "Thank you for reaching out. How can I help you today?";
                     displayMessage(mentorReply, 'mentor');
@@ -166,14 +159,14 @@
             messageElement.classList.add('chat-message', sender === 'user' ? 'user-message' : 'mentor-message');
             messageElement.textContent = message;
             chatBox.appendChild(messageElement);
-            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+            chatBox.scrollTop = chatBox.scrollHeight;
         }
 
         // Function to end the chat and show feedback section
         function endChat() {
-            document.getElementById('message-input-container').style.display = 'none'; // Hide input
-            document.getElementById('end-chat-btn').style.display = 'none'; // Hide "End Chat" button
-            document.getElementById('feedback-section').style.display = 'block'; // Show feedback form
+            document.getElementById('message-input-container').style.display = 'none';
+            document.getElementById('end-chat-btn').style.display = 'none';
+            document.getElementById('feedback-section').style.display = 'block';
         }
 
         // Function to submit feedback
@@ -183,13 +176,13 @@
 
             if (feedback && rating >= 1 && rating <= 5) {
                 alert("Feedback Submitted. Thank you!");
-                // Optionally send feedback to a server or store it locally
+                // Store or send feedback here
             } else {
                 alert("Please provide a valid rating and feedback.");
             }
         }
 
-        // Initial messages to simulate chat history
+        // Initial chat simulation
         document.addEventListener('DOMContentLoaded', () => {
             displayMessage("Hello, welcome to the chat!", 'mentor');
             displayMessage("Hi! I need some guidance on my career path.", 'user');
